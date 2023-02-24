@@ -1,0 +1,23 @@
+export type HeaderProps = {
+  onBackPressed?: () => any;
+  onGoBack?: () => any;
+  onRightIconPress?: () => any;
+  onFilterChanged?: () => any;
+  noStatusBar?: boolean;
+  noHeader?: boolean;
+  hasBack?: boolean;
+  exitApp?: boolean;
+  rightIcon?: any;
+  title?: string;
+  price?: string;
+  rightNumber?: number;
+  rightText?: string;
+  barStyle?: boolean;
+  isTitleInCenter?: boolean;
+  deltaHeight?: number;
+  opacity?: number;
+  id?: any;
+  groupId?: any;
+  isNotification?: boolean;
+  onUpdateNotification?: Function;
+};

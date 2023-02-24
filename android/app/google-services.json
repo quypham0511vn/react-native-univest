@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "567934582618",
+    "project_id": "univest-2ddf0",
+    "storage_bucket": "univest-2ddf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567934582618:android:a2a3c45fd38795a19cfd63",
+        "android_client_info": {
+          "package_name": "univest.vn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567934582618-9lsopbe3blf44a7cips4hs9mp5gs89hl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtqU9G6weG7KvgUpFknX16GfLFhQGdjWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567934582618-9lsopbe3blf44a7cips4hs9mp5gs89hl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "567934582618-h7527m9dc7fhcmc8h7sgbqmd31k8tukq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "univest.vn"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Univest</string>
+    <string name="facebook_app_id">718462402647487</string>
+    <string name="facebook_client_token">4a4c8974cc298fbb98b64eafd63868a6</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">8NdBVvA1j138K42L_kd7JT8mhKPsaOk_j2tPe</string>
+</resources>
+

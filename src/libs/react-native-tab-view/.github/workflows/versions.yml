@@ -1,0 +1,18 @@
+name: Check versions
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  check-versions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: react-navigation/check-versions-action@v1.0.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          required-packages: |
+            react-native
+            react-native-tab-view
+            react-native-pager-view
+          optional-packages: |
+            expo

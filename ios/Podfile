@@ -1,0 +1,38 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '11.0'
+
+target 'Univest' do
+  config = use_native_modules!
+
+  $RNFirebaseAnalyticsWithoutAdIdSupport=true
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # to enable hermes on iOS, change `false` to `true` and then install pods
+    :hermes_enabled => false
+  )
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'PasscodeAuth', :path => '../node_modules/@el173/react-native-passcode-auth'
+
+  permissions_path = '../node_modules/react-native-permissions/ios'
+     pod 'Permission-Camera', :path => "#{permissions_path}/Camera/Permission-Camera.podspec"
+     pod 'Permission-PhotoLibrary', :path => "#{permissions_path}/PhotoLibrary/Permission-PhotoLibrary.podspec"
+     pod 'Permission-LocationWhenInUse', :path => "#{permissions_path}/LocationWhenInUse/Permission-LocationWhenInUse.podspec"
+     pod 'GoogleSignIn'
+  
+  post_install do |installer|
+     react_native_post_install(installer)
+     __apply_Xcode_12_5_M1_post_install_workaround(installer)
+    
+     installer.pods_project.targets.each do |target|
+         target.build_configurations.each do |config|
+            config.build_settings['OTHER_CPLUSPLUSFLAGS'] = ''
+            config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+            # config.build_settings["ONLY_ACTIVE_ARCH"] = "NO"
+         end
+     end
+  end
+
+ 
+end

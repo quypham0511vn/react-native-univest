@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <link type=”image/x-icon” href="http://127.0.0.1:8000/images/icon-logo.svg" rel="shortcut icon" />
+    <script src="https://tienngay.vn/assets/frontend/js/jquery-2.2.3.min.js" type="text/javascript"></script>
+    <title>Univest</title>
+    <style>
+        body {
+            background: gray
+        }
+        
+        html {
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+        
+        .page {
+            width: 100%;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            background: #fff;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .header img {
+            width: 100px;
+        }
+        
+        .footer {
+            font-size: 7.5px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-left {
+            float: left;
+        }
+        
+        .footer-right {
+            float: right;
+        }
+        
+        .footer-right span {
+            display: block;
+        }
+        
+        .content {
+            font-size: 14px;
+            line-height: 20px;
+            padding: 0% 7%;
+            padding-top: 3%;
+            position: relative
+        }
+        
+        .numbered {
+            position: absolute;
+            bottom: 8px;
+            left: 48%;
+            font-size: 10px
+        }
+        
+        p {
+            margin: 6px 0;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 14px;
+        }
+        
+        ol,
+        ul {
+            padding-left: 15px
+        }
+        
+        .sign {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .sign-left {
+            width: 40%;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            gap: 30px
+        }
+        
+        .sign-right {
+            width: 60%;
+            float: right;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        
+        .page17-top {
+            text-align: center;
+        }
+        /* mobile and tablet */
+        
+        @media only screen and (max-width:63.9375em) {
+            .content {
+                font-size: 13px;
+                line-height: 17px;
+                padding: 0% 3%;
+                padding-top: 3%;
+            }
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            var height = 800;
+            $(".content").each(function() {
+                if ($(this).height() > height)
+                    $(this).css('height', $(this).height() + 50);
+                else
+                    $(this).css('height', height);
+            });
+        });
+    </script>
+</head>
+
+<body class="antialiased right_col">
+
+    <div class="page page-1">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+
+            <p style="text-align: center;"><strong>HỢP ĐỒNG HỢP T&Aacute;C KINH DOANH (BCC)</strong></p>
+            <p style="text-align: center;"><strong>Số</strong><strong>:</strong>
+                <strong>{user_id}</strong><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Ng&agrave;y</strong><strong>: {created_at}</strong>
+            </p>
+            <p><strong>&nbsp;</strong></p>
+            <p>V&agrave;o ng&agrave;y <em>Người d&ugrave;ng </em>nhấp v&agrave;o n&uacute;t đăng k&yacute; v&agrave; thực hiện thủ tục đăng k&yacute; t&agrave;i khoản tr&ecirc;n <em>Phần mềm Univest</em>, <em>Người d&ugrave;ng
+                </em>cam đoan v&agrave; x&aacute;c nhận rằng m&igrave;nh đ&atilde; đọc v&agrave; hiểu một c&aacute;ch cẩn trọng v&agrave; r&otilde; r&agrave;ng, cũng như đồng &yacute; tr&ecirc;n cơ sở tự do, tự nguyện c&ugrave;ng
+                <em>C&ocirc;ng
+                    ty
+                </em>x&aacute;c lập đối với to&agrave;n bộ điều khoản của <em>Điều khoản sử dụng t&iacute;nh năng
+                </em>v&agrave;
+                <em>Hợp đồng </em>như nội dung dưới đ&acirc;y.
+            </p>
+            <p><strong>B&ecirc;n A: </strong><strong>{full_name}</strong></p>
+            <p><strong>M&atilde; định danh: </strong><strong>{user_id}</strong></p>
+            <p>CMND/CCCD/Hộ chiếu: {identity}</p>
+            <p>Nơi cấp: {address_identity}</p>
+            <p>Ngày cấp: {date_identity}</p>
+            <p>Giới tính: {gender}</p>
+            <p>Quốc tịch: Việt Nam</p>
+            <p>MST: {tax_code}</p>
+            <p>Địa chỉ thường tr&uacute;: {address}</p>
+            <p>Chủ t&agrave;i khoản ng&acirc;n h&agrave;ng: {name_account_bank}</p>
+            <p>Số t&agrave;i khoản ng&acirc;n h&agrave;ng: {account_bank}</p>
+            <p>Ng&acirc;n h&agrave;ng: {name_bank}</p>
+            <p>Email: {email}</p>
+            <p>Số điện thoại: {phone_number}</p>
+            <p>(Sau đ&acirc;y gọi l&agrave; &ldquo;<strong>Người d&ugrave;ng</strong>&rdquo;)</p>
+            <p><strong>B&ecirc;n B: C&ocirc;ng ty cổ phần C&ocirc;ng nghệ T&agrave;i ch&iacute;nh Univest</strong></p>
+            <p>Giấy chứng nhận đăng k&yacute; doanh nghiệp số: 0109876240 cấp lần đầu ng&agrave;y 29/12/2021.</p>
+            <p>M&atilde; số thuế: 0109876240</p>
+            <p>Đại diện: &Ocirc;ng Đ&agrave;o Mạnh Dũng&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Chức vụ: Tổng gi&aacute;m
+                đốc
+            </p>
+            <p>Email: contact@univest.vn</p>
+            <p>Trụ sở ch&iacute;nh: Tầng 15, Khối B, To&agrave; nh&agrave; S&ocirc;ng Đ&agrave;, Đường Phạm H&ugrave;ng, Phường Mỹ Đ&igrave;nh 1, Quận Nam Từ Li&ecirc;m, Th&agrave;nh phố H&agrave; Nội, Việt Nam.</p>
+            <p>(Sau đ&acirc;y gọi l&agrave; &ldquo;<strong>C&ocirc;ng ty</strong>&rdquo;)</p>
+            <p>&nbsp;</p>
+
+        </div>
+        <div class="footer">
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+        </div>
+        <div class="numbered">1</div>
+    </div>
+
+    <div class="page page-2">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>
+                <strong>Xét thấy:</strong>
+            </p>
+            <p><i>Người dùng </i>xác nhận đã đáp ứng các điều kiện theo quy định tại <i>Điều khoản sử dụng</i> được đăng tải trên <i>Phần mềm Univest</i> và của <i>Công ty</i> đồng thời cam kết tuân thủ theo các quy định tại
+                <i>Điều khoản sử dụng.</i>
+            </p>
+            <p><i>Người dùng </i>có nguồn tiền hợp pháp và có nhu cầu tích luỹ, đầu tư vào các <i> Sản phẩm</i> từ nguồn tiền này.</p>
+            <p><i>Công ty có Hệ thống phần mềm </i>để trợ giúp cho <i>Người dùng</i> thực hiện việc tích lũy, đầu tư vào các <i> Sản phẩm. </i></p>
+            <p><i>Người dùng </i>mong muốn tích luỹ, đầu tư vào các Sản phẩmthông qua việc <i>Hợp tác kinh doanh</i> với
+                <i>Công ty</i> nhằm mục đích sinh lợi nhuận, và <i>Công ty</i> đồng ý <i>Hợp tác kinh doanh</i> với
+                <i>Người dùng</i> để thực hiện các giao dịch liên quan đến các Sản phẩm.
+            </p>
+            <p>Địa điểm thực hiện <i>Hợp tác kinh doanh</i>: trong phạm vi lãnh thổ Việt Nam.</p>
+            <p>Các Bên chấp thuận và đồng ý rằng nội dung của <i>Hợp đồng</i> này sẽ được lập ra dưới hình thức một hợp đồng điện tử và việc Người dùng đồng ý bắt đầu quy trình đăng ký bằng cách nhấp vào nút đăng ký, hoàn tất thủ tục xác thực tài khoản và
+                nhấn nút “Tôi đồng ý” trên Phần mềm Univest đồng nghĩa với việc Người dùng xác nhận Hợp đồng điện tử sẽ được tạo lập, các điều khoản, điều kiện của Hợp đồng điện tử có giá trị pháp lý, ràng buộc và có hiệu lực thi hành. </p>
+            <p><i>Các bên cùng nhau thỏa thuận và đồng ý ký kết hợp đồng với các điều kiện và điều khoản phạm như
+                    sau:</i></p>
+            <p><strong>Điều 1. Định nghĩa</strong></p>
+            <p> <strong>1. <i> Bên B/ Công ty/ Univest:</i> </strong> là CTCP Công nghệ Tài chính Univest.
+            </p>
+            <p> <strong>2.<i> Bên A/Người dùng/khách hàng:</i></strong> là cá nhân đăng ký và sử dụng phần mềm Univest để tham gia Hợp tác kinh doanh trên phần mềm Univest tương ứng với UID và giao kết Hợp đồng này.</p>
+            <p><strong><i>3. Hai bên/ Các bên:</i></strong> là Bên A và Bên B</p>
+            <p><strong>4. <i> Một bên/ Mỗi bên/ Bên kia:</i></strong> là Bên A hoặc Bên B tuỳ thuộc vào ngữ cảnh
+                <i>Người dùng/ Bên
+                    A</i>: là cá nhân đăng ký tài khoản trên <i>Phần mềm Univest</i> để tham gia Hợp Tác Kinh Doanh trên Phần mềm Univest tương ứng với mã UID và giao kết Hợp đồng này.
+            </p>
+            <p><strong>5. <i>Người dùng khác:</i></strong> là cá nhân đăng ký tài khoản trên <i>Phần mềm Univest</i> nhưng có mã <i>UID
+                    khác với mã UID của Người dùng. </i></p>
+            <p><strong>6. <i>Điều khoản sử dụng</i>:</strong> là các quy định của <i>Công ty</i> đối với <i>Người
+                    dùng</i> khi sử dụng các Tính năng trên <i>Phần mềm Univest</i> được đăng tải trên <i>Trang chủ chính thức</i> của <i>Công ty
+                    (bao gồm cả những hỗ
+                    trợ, giải đáp thắc mắc cho Người dùng được phản hồi, cung cấp chính thức bởi Univest.</i> </p>
+            <p><strong>7. <i>Form hỗ trợ</i>:</strong> Là mẫu biểu được thiết kế trên <i>Phần mềm Univest</i> nhằm trợ giúp <i>Người dùng</i> gửi những yêu cầu về hỗ trợ và thắc mắc tới <i> Công ty.</i></p>
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+
+            </div>
+
+        </div>
+        <div class="numbered">2</div>
+    </div>
+    <div class="page page-3">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p><strong>8. <i>Danh mục Sản phẩm:</i></strong> là danh mục các Sản phẩm được phân bổ theo tỷ lệ xác định hoặc tự động phân bổ bởi <i>Hệ thống phần mềm.</i></p>
+            <p><strong>9. <i>Sản phẩm</i>:</strong> là Sản phẩm Túi Univest, Sản phẩm Tích lũy và các Sản phẩm khác theo hoạt động của Univest tùy từng thời điểm. Danh sách các Sản phẩm do Công ty toàn quyền quyết định, được đăng tải và cập nhật trên <i>Trang chủ chính thức</i>                của Công ty.</p>
+            <p><strong>10. <i>Hệ thống phần mềm</i>:</strong> là tập hợp bao gồm nhưng không giới hạn các Ứng dụng, website, các chương trình phần mềm, cơ sở dữ liệu của <i>Công ty</i> để <i>Công ty</i>(i) thực hiện quy định của Hợp đồng hợp tác kinh doanh
+                này; (ii) Quản trị hệ thống thông tin và (iii) Cung cấp các Tính năng khác cho <i>Người
+                    dùng.</i></p>
+            <p><strong>11. <i>Số tiền vốn góp/Vốn hợp tác kinh doanh</i>:</strong> là tổng số tiền <i>Người dùng</i> góp vốn vào <i>Hợp
+                    đồng hợp tác kinh doanh</i> này dưới hình thức Người dùng chuyển tiền thông qua tài khoản ngân hàng hoặc bất kỳ hình thức nào theo yêu cầu của <i>Người dùng</i> dưới sự cho phép của Univest.</p>
+            <p><strong>12. <i>Hợp đồng:</i></strong> là Hợp đồng Hợp tác kinh doanh này giữa <i> Công ty và Người dùng .
+                </i></p>
+            <p><strong>13. <i>Hợp tác kinh doanh:</i></strong> là việc <i>Công ty và Người dùng</i> thỏa thuận và thực hiện các nội dung tại <i>Hợp đồng</i> này.</p>
+            <p><strong>14. <i> Đơn vị cung cấp dịch vụ chi hộ/thu hộ:</i></strong> là đơn vị được phép cung ứng dịch vụ thanh toán tại Việt Nam có ký kết hợp đồng cung cấp dịch vụ chi hộ/thu hộ với Công ty.</p>
+            <p><strong>15. <i> Đơn vị giám sát:</i></strong> là bên thứ ba độc lập được Công ty ký kết Hợp đồng để Giám sát dòng tiền được chi từ <i>Tài khoản tiền kinh doanh</i> của Công ty và được Công ty công bố trên <i>Trang chủ
+                    chính
+                    thức.</i></p>
+            <p><strong>16. <i>Đơn vị quản lý đầu tư:</i></strong> là công ty chứng khoán và/hoặc công ty quản lý quỹ quản lý đầu tư và/hoặc bất kỳ bên thứ ba nào có ngành nghề và nghiệp vụ nhận ủy thác vốn, tài sản để quản lý đầu tư do Công Ty toàn quyền
+                chọn lựa và được Công ty công bố trên Trang chủ chính thức.</p>
+            <p><strong>17. <i>Ngân hàng lưu ký:</i></strong> là Ngân hàng thương mại có Giấy chứng nhận đăng ký hoạt động lưu ký chứng khoán do Ủy ban Chứng khoán Nhà nước cấp, được phép thực hiện các dịch vụ lưu ký (nhận ký gửi, bảo quản, chuyển giao chứng
+                khoán) theo quy định pháp luật. </p>
+            <p><strong>18. <i> Pháp luật:</i></strong> là pháp luật hiện hành của Việt Nam, bao gồm nhưng không giới hạn ở các luật, bộ luật, nghị định, thông tư, quyết định, ... có hiệu lực do các cơ quan nhà nước có thẩm quyền của Việt Nam ban hành tùy
+                từng thời điểm.</p>
+            <p><strong>19. <i>Phí:</i></strong> là các loại phí/lệ phí/chi phí khác mà Người dùng đồng ý sử dụng và cho phép Công ty sử dụng từ Vốn hợp tác kinh doanh để thanh toán như được quy định tại Điều 6 Hợp đồng này.</p>
+            <p> <strong>20. <i>Rút tiền:</i> </strong> là việc Người dùng rút toàn bộ hoặc một phần trong tổng tài sản của Người dùng (bao gồm Số tiền góp vốn/ Vốn hợp tác kinh doanh, tiền lãi, lợi nhuận khác,…) đã nạp vào và/hoặc có trong Tài khoản Người
+                dùng về Tài khoản ngân hàng của Người dùng.</p>
+            <p><strong>21. <i>Quyền đăng nhập Hệ thống phần mềm tương ứng với UID:</i></strong> là các quyền truy cập vào </p>
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+        </div>
+        <div class="numbered">3</div>
+    </div>
+
+    <div class="page page-4">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>Phần mềm Univest tương ứng với 01 UID để thực hiện việc tích lũy, đầu tư hoặc sử dụng các Tính năng khác do Công ty cung cấp trên Phần mềm Univest.</p>
+            <p><strong>22. <i>Sự kiện bất khả kháng:</i></strong> là bất kỳ sự kiện hoặc trường hợp nào nằm ngoài khả năng kiểm soát của các Bên hoặc các Bên không thể dự liệu một cách hợp lý trước khi ký kết hoặc trong thời gian triển khai thực hiện Hợp
+                đồng này, bao gồm nhưng không chỉ giới hạn ở các sự kiện sau đây: dịch bệnh, hỏa hoạn, bão, lũ lụt, động đất hoặc thiên tai khác, bạo loạn, khủng bố, cháy nổ nghiêm trọng, chiến tranh, bạo động dân sự, chính biến, thay đổi của pháp luật
+                và chính sách của nhà nước.</p>
+            <p><strong>23. <i>Tài khoản giao dịch Sản phẩm</i>:</strong> là Tài khoản Công ty mở tại một bên thứ ba khác để thực hiện giao dịch, đầu tư các Sản phẩm.</p>
+            <p><strong>24. <i>Tài khoản Ngân hàng của Người dùng</i>:</strong> là tài khoản thanh toán được mở tại Ngân hàng thương mại Việt Nam hoặc Chi nhánh Ngân hàng nước ngoài tại Việt Nam được Người dùng đăng ký là tài khoản Ngân hàng để nhận Số tiền
+                thu hồi vốn đầu tư được nhận. Mỗi một Người dùng chỉ được phép đăng ký 01 Tài khoản Ngân hàng trên hệ thống để nhận Số tiền thu hồi vốn đầu tư được nhận.</p>
+            <p><strong>25. <i>Tài khoản tiền kinh doanh</i>:</strong> là tài khoản thanh toán của Công ty được mở tại các Ngân hàng thương mại để nhận tiền Hợp tác kinh doanh từ Người dùng.</p>
+            <p><strong>26. <i>Tài khoản Người dùng</i>: </strong>là tài khoản của Người dùng được đăng ký trên Phần mềm Univest tương ứng với một UID.</p>
+            <p><strong>27. <i>Thời gian ngủ đông</i>:</strong> là khoảng thời gian tối đa Công ty cho phép Tài khoản Người dùng không hoạt động và không có tiền hay tài sản mà không bị Công ty đơn phương chấm dứt Hợp đồng, được Công ty toàn quyền quyết định
+                và công bố vào từng thời kỳ trên Trang chủ chính thức.</p>
+            <p><strong>28. <i> Thuế TNCN</i>:</strong> là khoản thuế được quy định tại Khoản 1 Điều 7 Hợp đồng này.</p>
+            <p><strong>29. <i>Tính năng Univest/ Tính năng</i>:</strong> là các sản phẩm, dịch vụ, tính năng được Univest/ bên thứ ba cung cấp tới Người dùng thông qua Phần mềm Univest, bao gồm nhưng không giới hạn sản phẩm Túi Univest, sản phẩm Tích lũy,...
+                và các sản phẩm, tính năng khác được Univest hoặc bên thứ ba cung cấp tới Người dùng phát sinh từng thời kỳ.</p>
+            <p><strong>30. <i> Phần mềm Univest</i>:</strong> có nghĩa là phần mềm và công nghệ của Univest mà thông qua đó Người dùng sử dụng các Tính năng do Univest cung cấp.</p>
+            <p><strong>31. Các đường link để Người dùng có thể download hoặc sử dụng Phần mềm Univest như sau:</strong>
+            </p>
+            <p>(i) Phiên bản IOS: {link_ios} </p>
+            <p>(ii) Phiên bản Android: {link_android} </p>
+            <p>(iii) Phiên bản website: https://univest.vn </p>
+            <p><strong>32. <i> UID/ User ID/ Mã Người dùng</i>:</strong> là mã do Công ty cung cấp cho mỗi Người dùng để định danh Người dùng và định danh Tài khoản Người dùng.</p>
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">4</div>
+    </div>
+
+    <div class="page page-5">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p><strong>33. <i>Website/ Trang chủ/ Trang chủ chính thức</i>:</strong> là website có địa chỉ tên miền là https://univest.vn. Các đề mục sử dụng trong Hợp đồng này chỉ để tiện theo dõi, không làm ảnh hưởng đến các điều khoản của Hợp đồng.</p>
+            <p>34. Các tiêu đề trong Hợp đồng này chỉ dùng cho mục đích tham khảo và sẽ không làm ảnh hưởng đến việc diễn giải hoặc giải thích Hợp đồng này.</p>
+            <p> <strong>Điều 2. Nội dung hợp tác kinh doanh</strong></p>
+            <p>1. Người dùng thực hiện đăng ký Tài khoản Người dùng và thực hiện góp vốn vào Hợp đồng hợp tác Kinh doanh. Số tiền vốn góp của Người dùng sẽ được đầu tư vào các Sản phẩm theo yêu cầu của Người dùng trên Phần mềm Univest hoặc có thể được Công
+                ty quản lý nếu có uỷ thác của Người dung và/ hoặc ủy thác cho Đơn vị quản lý đầu tư, tùy theo toàn quyền quyết định của Công ty.</p>
+            <p>2. Công ty bằng các kiến thức, kinh nghiệm và bí quyết của mình sẽ thiết lập các Danh sách Sản phẩm để hỗ trợ Người dùng ra quyết định đầu tư.</p>
+            <p>3. Người dùng thực hiện toàn bộ thao tác liên quan đến Hợp tác kinh doanh trên hoặc thông qua Phần mềm Univest, theo đúng và phù hợp với chỉ dẫn của Công ty tại từng thời điểm được công bố trên Phần mềm Univest hoặc Website, hoặc thông báo
+                vào hòm thư điện tử đã đăng ký của Người dùng</p>
+            <p>4. Người dùng có quyền tự do lựa chọn Sản phẩm được cung cấp trên Phần mềm Univest. Công ty có nghĩa vụ đảm bảo giao dịch Sản phẩm theo đúng yêu cầu của Người dùng.</p>
+            <p>5. Trên cơ sở Người dùng tuân thủ các quy định của Hợp đồng này và các thỏa thuận khác với Công ty, khi Người dùng yêu cầu rút Vốn hợp tác kinh doanh, Công ty sẽ chuyển tiền vào Tài khoản Ngân hàng của Người dùng; tài khoản ví điện tử hoặc
+                bất kỳ tài khoản nào khác theo yêu cầu của Người dùng và được Univest cho phép thực hiện.</p>
+            <p>6. Để phục vụ Hợp tác kinh doanh, Công ty có toàn quyền quyết định sử dụng một số Tính năng, công việc hay thông tin có tính Phí trên Phần mềm Univest hoặc của Công ty hoặc của bên thứ ba.</p>
+            <p><strong>Điều 3. Đóng góp</strong></p>
+            <p>1. Đóng góp của các Bên vào Hợp tác kinh doanh:</p>
+            <p>a. Người dùng góp tài sản bằng tiền bằng cách chuyển tiền trực tiếp vào Tài khoản tiền Kinh doanh của Công ty hoặc chuyển tiền thông qua Đơn vị cung cấp dịch vụ thu hộ hoặc bằng các hình thức khác được Công ty chấp nhận. Toàn bộ các chi phí
+                phát sinh liên quan đến hoạt động chuyển tiền góp vốn vào Tài khoản kinh doanh sẽ do Người dùng chịu;</p>
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+        </div>
+        <div class="numbered">5</div>
+    </div>
+
+    <div class="page page-6">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p> b. Công ty đóng góp (i) Quyền đăng nhập Hệ thống phần mềm tương ứng với UID, (ii) kiến thức, kinh nghiệm và bí quyết của mình để thiết lập các Danh sách Sản phẩm và (iii) công sức chọn lựa, liên lạc và làm việc với Đơn vị quản lý đầu tư và
+                các bên thứ ba khác phục vụ cho Hợp tác kinh doanh. Để làm rõ thêm, việc đóng góp Quyền đăng nhập Hệ thống phần mềm tương ứng với UID của Công ty không đồng nghĩa với việc Người dùng sẽ được sử dụng các Tính năng trên Hệ thống phần mềm
+                mà không phải trả Phí. Công ty vẫn có quyền thu các Phí phát sinh từ việc sử dụng các Tính năng trên Hệ thống phần mềm.
+            </p>
+            <p>2. Các Sản phẩm có thể được mang tên sở hữu, quản lý bởi Công ty hoặc bởi Đơn vị quản lý đầu tư, có thể thông qua Ngân hàng lưu ký, tuy nhiên Người dùng vẫn là người hưởng lợi đối với các Sản phẩm mà Người dùng sử dụng. Công ty có quyền áp
+                dụng bù trừ/cấn trừ Sản phẩm giữa Người dùng và Người dùng khác hoặc các nghiệp vụ khác để phục vụ việc Hợp tác kinh doanh và phù hợp với các quyết định đầu tư, tích luỹ hợp lệ của Người dùng.</p>
+            <p>3. Tất cả các tài sản của Công ty bao gồm nhưng không chỉ giới hạn ở tài sản hữu hình và tài sản vô hình như quyền sở hữu công nghệ, bí mật kinh doanh, quyền sở hữu trí tuệ, ... thuộc quyền sở hữu riêng của Công ty và không nằm trong tài sản
+                hợp tác kinh doanh hay tài sản chung với Người dùng.</p>
+            <p><strong>Điều 4. Thời gian hợp tác</strong></p>
+            <p>Thời gian hợp tác được tính từ thời điểm Người dùng đăng ký Tài khoản Người dùng tại trang chủ chính thức hoặc đăng ký tài khoản trên Phần mềm Univest cho tới thời điểm xảy ra các trường hợp như được quy định tại Điều 11 Hợp đồng này.</p>
+            <p> <strong>Điều 5. Phân chia Doanh thu và lãi/lỗ</strong></p>
+            <p>1. Hàng tháng, không phụ thuộc vào mức lợi nhuận/ lỗ trên phần Vốn hợp tác kinh doanh của Người dùng, Công ty có quyền nhận được Doanh thu cố định từ Vốn hợp tác kinh doanh là một khoản tiền (Theo công bố của Công ty tuỳ vào từng thời điểm).
+                Khoản tiền này được thu vào ngày đầu tiên trong tháng hoặc thời điểm khác được Công ty công bố, và có chi tiết trong lịch sử giao dịch.</p>
+            <p>2. Trong trường hợp đối với một số Sản phẩm được Công ty hoặc một bên thứ ba bất kỳ đề cập đến lợi nhuận hoặc lợi nhuận kỳ vọng, Công ty có quyền được nhận mọi khoản tiền, lợi nhuận chênh lệch (nếu có) giữa lợi nhuận thực tế và lợi nhuận/lợi
+                nhuận kỳ vọng đã được đề cập.</p>
+            <p>3. Đối với mỗi Tài khoản Người dùng, tại từng thời kỳ, sau khi đã trừ đi (i) Doanh thu cố định phân chia cho Công ty như đã quy định ở trên, (ii) các chi phí liên quan đến Phí để phục vụ Hợp tác kinh doanh, và (iii) Thuế TNCN tương ứng liên
+                quan đến thu nhập từ Hợp tác kinh doanh, Người dùng sẽ được nhận toàn bộ doanh thu và lãi/lỗ còn lại.</p>
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+        </div>
+        <div class="numbered">6</div>
+    </div>
+
+    <div class="page page-7">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p><strong>Điều 6. Phí</strong></p>
+            <p>Người dùng đồng ý cho phép Công ty toàn quyền sử dụng Vốn hợp tác kinh doanh để thanh toán mọi Phí liên quan và/hoặc phục vụ cho Hợp tác kinh doanh, bao gồm cả Phí cho các Tính năng, dịch vụ, công việc, thông tin được cung cấp trên Phần mềm
+                Univest, hoặc của Công ty hoặc của bên thứ ba, do Công ty toàn quyền quyết định và có thông báo trước tới Người dùng. Các khoản Phí và mức Phí sẽ do Công ty toàn quyền quyết định và công bố tại từng thời kỳ trên Trang chủ chính thức.</p>
+            <p><strong>Điều 7. Nghĩa vụ thuế</strong></p>
+            <p>1. Công ty thực hiện khấu trừ một phần tiền mà Công ty cho rằng là hợp lý và phù hợp với quy định pháp luật trước khi phân bổ doanh thu và lãi/lỗ cho Người dùng để thực hiện đóng thuế thu nhập cá nhân (TNCN) của Người dùng tại từng thời điểm
+                Người dùng (i) thu hồi Vốn hợp tác kinh doanh, hoặc (ii) nhận lãi, cổ tức, trái tức (nếu có) từ Sản phẩm, hoặc (iii) rút/nhận tiền, tiền lãi, lợi tức hoặc lợi nhuận khác.</p>
+            <p>2. Công ty sẽ áp dụng các mức thuế và hình thức kê khai thuế TNCN mà Công ty cho rằng tương đồng và phù hợp nhất. Nếu có các hướng dẫn cụ thể của các Cơ quan nhà nước liên quan đến mức thuế TNCN, Công ty sẽ thực hiện truy thu hoặc hoàn trả
+                tiền thuế đã thu thiếu hoặc thừa (nếu có) cho Người dùng.</p>
+            <p>3. Nghĩa vụ thuế của Công ty sẽ do Công ty tự kê khai và chịu trách nhiệm.</p>
+            <p><strong>Điều 8. Nguyên tắc thu chi</strong></p>
+            <p>1. Mọi khoản thu chi cho hoạt động Hợp tác kinh doanh đều phải được ghi chép rõ ràng, đầy đủ và chính xác trên Tài khoản Người dùng và Hệ thống phần mềm.</p>
+            <p> 2. Doanh thu phát sinh có thể xảy ra và xảy ra bởi các trường hợp sau đây:</p>
+            <p> a. Cổ tức, trái tức, tiền lãi được phát sinh từ Sản phẩm.</p>
+            <p> b. Các khoản thu nhập khác.</p>
+            <p> 3. Trong trường hợp có doanh thu phát sinh, Công ty sẽ có trách nhiệm hạch toán vào Tài khoản Người dùng.
+            </p>
+            <p> 4. Chi phí phát sinh có thể xảy ra và xảy ra bởi các trường hợp sau đây:</p>
+            <p> a. Các khoản phí được quy định tại Điều 6 Hợp đồng này;</p>
+            <p> b. Lỗ vì kết quả hoạt động từ các Sản phẩm;</p>
+            <p> c. Chi phí khác.</p>
+            <p> 5. Tài khoản tiền kinh doanh của Công ty được giám sát được bởi Đơn vị giám sát (nếu có). Mọi khoản rút tiền, chuyển tiền trên Tài khoản tiền kinh doanh của Công ty đều phải được Đơn vị giám sát kiểm soát và phê duyệt.</p>
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+        </div>
+        <div class="numbered">7</div>
+    </div>
+
+    <div class="page page-8">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p> <strong>Điều 9. Quyền và nghĩa vụ của Công Ty</strong></p>
+            <p> <strong>1. Quyền của Công ty</strong></p>
+            <p> a. Được phân chia doanh thu theo Khoản 1 Điều 5 của Hợp đồng này và thu các loại Phí theo quy định tại Điều 6 Hợp đồng này;</p>
+            <p> b. Theo như đánh giá rủi ro của Công ty, căn cứ theo biến động thị trường, bản chất của sản phẩm Hợp Tác Kinh Doanh dự kiến triển khai, Công ty có thể có những loại trừ, hạn chế phù hợp với đối tượng Người dùng có thể tham gia Hợp Tác Kinh
+                Doanh với các sản phẩm cụ thể. Những hạn chế, chính sách chi tiết sẽ được thông báo tới Người dùng trước khi triển khai sản phẩm Hợp Tác Kinh Doanh.</p>
+            <p> c. Được quyền từ chối tham gia Hợp Tác Kinh Doanh với Người dùng nếu Người dùng vi phạm bất kỳ điều khoản nào của Hợp đồng này và/hoặc Điều khoản sử dụng và/hoặc thỏa thuận khác với Công ty;</p>
+            <p> d. Được Người dùng đồng ý để Công ty trực tiếp hoặc ủy quyền cho bên thứ ba do Công ty lựa chọn để đại diện đứng chủ sở hữu các Sản phẩm;</p>
+            <p> e. Nhằm đảm bảo lợi ích của các Bên trong quá trình triển khai Hợp đồng hợp tác kinh doanh, Công ty có quyền chủ động lựa chọn các Sản phẩm phù hợp theo quyết định sử dụng Tính năng Univest của Người dùng;
+            </p>
+            <p>f. Được toàn quyền quyết định các vấn đề, bao gồm nhưng không giới hạn về Đơn vị cung cấp dịch vụ thu hộ, Đơn vị cung cấp dịch vụ chi hộ, Tài khoản giao dịch Sản phẩm, Tài khoản tiền kinh doanh của Công ty, Danh mục Sản phẩm, Phí, Đơn vị giám
+                sát,… nhằm mục tiêu phục vụ cho hoạt động liên quan đến Hợp đồng hợp tác kinh doanh này;</p>
+            <p>g. Được toàn quyền quyết định việc hợp tác với các Đối tác cũng đồng thời cung cấp sản phẩm, dịch vụ tới Người dùng nhằm phối hợp, liên kết sản phẩm để Người dùng có thể sử dụng Tính năng của Phần mềm Univest một cách toàn diện, thuận tiện,
+                mang đến hiệu quả tối đa cho quá trình Hợp tác kinh doanh.</p>
+            <p>h. Được toàn quyền quyết định đối với số tiền được chuyển vào Tài khoản tiền Kinh doanh khi Người dùng chuyển tiền không đúng theo các hướng dẫn, quy định của Univest được công bố công khai tới Người dùng thông qua Phần mềm Univest.</p>
+            <p>i. Đại diện nhận và thực hiện việc phân chia cổ tức (nếu có) hay lãi suất (nếu có) từ các Sản phẩm tới Người dùng</p>
+            <p>j. Rà soát, kiểm định và xác nhận thông tin Người dùng, yêu cầu Người dùng cung cấp các thông tin mà Công Ty thấy cần thiết nhằm đảm bảo Người dùng không sử dụng Phần mềm Univest như một hình thức rửa tiền hoặc để ngăn ngừa các hành vi phạm
+                pháp khác;</p>
+
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+        </div>
+        <div class="numbered">8</div>
+    </div>
+
+    <div class="page page-9">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>k. Trừ khi có quy định cụ thể khác, Công ty có quyền thực hiện các quyền, công việc, và nghĩa vụ của mình được quy định tại Hợp đồng này mà không cần có sự chấp thuận trước của Người dùng.</p>
+            <p>l. Trong quá trình khi Người dùng tham gia Hợp Tác Kinh Doanh với Univest và có những biểu hiện bất thường, hay khi có những sự kiện, vấn đề có thể ảnh hưởng đến quyền lợi của Công ty, bên thứ ba và/hoặc xã hội cộng đồng, Công ty có quyền
+                áp dụng những quyền hạn, hạn chế liên quan tới Người dùng, Tài khoản Người dùng (bao gồm cả việc phong tỏa Tài khoản Người dùng) và thông báo tới cơ quan quản lý cần thiết, đồng thời chấm dứt Hợp đồng với Người dùng.</p>
+            <p>m. Công ty có quyền chuyển giao, ủy quyền, và/hoặc chuyển nhượng bất kỳ quyền và/hoặc nghĩa vụ nào của mình theo Hợp đồng này.</p>
+            <p>n. Việc Công ty chưa thực hiện quyền của mình theo Hợp đồng này sẽ không được hiểu và diễn dịch như là việc từ bỏ quyền đó. Công ty có thể thực hiện quyền của mình tại bất kỳ thời điểm nào thích hợp sau đó.
+            </p>
+            <p>o. Công ty không chịu bất kỳ trách nhiệm phát sinh trong trường hợp Người dùng không thực hiện các thao tác trên Hệ thống phần mềm và Phần mềm Univest theo đúng và phù hợp với chỉ dẫn của Công ty tại từng thời điểm được công bố trên Phần mềm
+                Univest hoặc Website, hoặc thông báo vào hòm thư điện tử đã đăng ký của Người dùng.</p>
+            <p>p. Trong trường hợp, Người dùng thực hiện các thao tác không đúng hoặc không phù hợp với chỉ dẫn của Công ty, theo toàn quyền quyết định của Công ty, các thao tác này sẽ bị (i) Công ty từ chối hoặc (ii) Công ty thay thế bằng các thao tác mặc
+                định khác như đã công bố trên Phần mềm Univest hoặc Website, hoặc thông báo vào hòm thư điện tử đã đăng ký của Người dùng.</p>
+            <p>q. Từ chối cung cấp mọi thông tin mà Công ty cho rằng là bí mật kinh doanh của Công ty, kể cả khi bí mật kinh doanh này có được sử dụng để phục vụ Hợp tác kinh doanh.</p>
+            <p>r. Có toàn quyền sử dụng và định đoạt các tài sản do mình đứng tên (bao gồm cả tài sản có liên quan hoặc phát sinh từ Hợp tác kinh doanh), mà không cần thông báo hay xin chấp thuận của Người dùng.</p>
+            <p>s. Yêu cầu Người dùng thực hiện thủ tục định danh thông tin cá nhân trong quá trình sử dụng Phần mềm Univest theo yêu cầu của Công ty tại từng thời điểm.</p>
+            <p>t. Căn cứ theo uỷ quyền và xác nhận của Người dùng trên Phần mềm Univest, Công ty được quyền chuyển khoản Vốn Hợp Tác Kinh Doanh mà Người dùng rút vào tài khoản cho bên thứ ba nhằm thực hiện các mục đích hợp pháp của Người dùng. Đồng thời,
+                căn cứ theo uỷ quyền và xác nhận của Người dùng, Công ty có thể đại diện nhận các khoản tiền từ bên thứ ba chi trả cho Người dùng và ghi nhận vào Vốn Hợp Tác Kinh Doanh.</p>
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+        </div>
+        <div class="numbered">9</div>
+    </div>
+
+    <div class="page page-10">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>u. Chấm dứt Hợp đồng và xử lý tài sản của Người dùng theo quy định chấm dứt Hợp đồng đối với Tài khoản của Người dùng trong trường hợp bao gồm nhưng không giới hạn: trường hợp Người dùng không thực hiện thủ tục định danh thông tin cá nhân
+                theo yêu cầu của Công ty; trường hợp Người dùng vi phạm nghiêm trọng các điều khoản sử dụng của Univest, đã được Univest thông báo trước đối với hành vi vi phạm.</p>
+            <p><strong>2. Nghĩa vụ của Công ty</strong></p>
+            <p>a. Đảm bảo tính minh bạch trong cung cấp thông tin cho Người dùng;</p>
+            <p>b. Đảm bảo độ bảo mật và ổn định của Hệ thống phần mềm;</p>
+            <p>c. Thực hiện việc cập nhật Hệ thống phần mềm khi cần thiết để nâng cấp chất lượng và trải nghiệm sử dụng Phần mềm Univest của Người dùng;</p>
+            <p>d. Phân chia doanh thu và lãi/ lỗ với Người dùng theo quy định tại Điều 5 Hợp đồng này;</p>
+            <p>e. Định kỳ cập nhật kết quả hoạt động liên quan tới Hợp tác kinh doanh tới Người dùng theo hình thức và nội dung mà Công ty cho rằng là phù hợp nhất;</p>
+            <p><strong>Điều 10. Quyền và nghĩa vụ của Người dùng</strong></p>
+            <p><strong>1. Quyền của Người dùng</strong></p>
+            <p>a. Là người hưởng lợi từ các Sản phẩm mà mình đầu tư. Người dùng xác nhận sẽ không nhận hưởng lợi dưới hình thức khác ngoài tiền, trừ khi Công ty có đồng ý khác;</p>
+            <p>b. Được quyền góp vốn và rút vốn vào Hợp tác kinh doanh thông qua Phần mềm Univest;</p>
+            <p>c. Được nhận các báo cáo về Tài khoản Người dùng theo định kỳ hàng tháng theo nội dung và hình thức mà Công ty cho rằng là phù hợp;</p>
+            <p>d. Được quyền uỷ quyền cho Công ty chuyển khoản Vốn Hợp Tác Kinh Doanh mà Người dùng rút cho bên thứ ba để chi trả cho các nghĩa vụ tài chính hợp pháp của Người dùng, đồng thời uỷ quyền cho Công ty nhận khoản chi trả từ bên thứ ba để ghi nhận
+                thành Vốn Hợp Tác Kinh Doanh;</p>
+            <p>e. Được sử dụng các Tính năng khác trên Phần mềm Univest nếu đáp ứng điều kiện để sử dụng các Tính năng này.
+            </p>
+            <p><strong>2. Nghĩa vụ của Người dùng</strong></p>
+            <p>a. Có trách nhiệm đảm bảo tính hợp pháp của Vốn hợp tác kinh doanh của Người dùng và thực hiện chuyển tiền tới Tài khoản tiền kinh doanh của Công ty;</p>
+            <p>b. Sử dụng Phần mềm Univest của Công ty làm nơi thực hiện giao dịch và các hoạt động liên quan khác trên Phần mềm Univest và công nhận các thao tác trên Phần mềm Univest là thao tác hợp lệ, hợp pháp và có quyền hạn ngang với việc sử dụng giấy
+                tờ. Người dùng công nhận sử dụng và thực hiện các thao tác trên hệ thống thay cho chữ ký bằng tay (chữ ký tươi) của Người dùng;</p>
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+        </div>
+        <div class="numbered">10</div>
+    </div>
+    <div class="page page-11">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+
+            <p>c. Thực hiện các thao tác trên Phần mềm Univest theo đúng và phù hợp với chỉ dẫn của Công ty tại từng thời điểm được công bố trên Phần mềm Univest hoặc Website, hoặc thông báo vào hòm thư điện tử đã đăng ký của Người dùng.</p>
+            <p>d. Xác nhận đồng ý với các điều khoản của Hợp đồng khi mở tài khoản, tại thời điểm Người dùng xác nhận đồng ý, Hợp đồng này có hiệu lực và có giá trị như bản Hợp đồng có chữ ký trực tiếp của Người dùng.</p>
+            <p>e. Chấp nhận toàn bộ kết quả hoạt động của các Sản phẩm;</p>
+            <p>f. Đồng ý ủy thác số Vốn hợp tác kinh doanh của Người dùng cho Công ty, hoặc thông qua Công ty tới Đơn vị quản lý đầu tư;</p>
+            <p>g. Đảm bảo các thông tin cá nhân và các thông tin khác cung cấp trên Hệ thống phần mềm và Phần mềm Univest là chính xác. Người dùng chịu trách nhiệm về các hậu quả phát sinh do việc cung cấp thông tin không chính xác gây ra;</p>
+            <p>h. Bảo đảm và chịu trách nhiệm về quyền và khả năng sử dụng Tài khoản Người dùng trên Phần mềm Univest. Công Ty không chịu bất kỳ trách nhiệm nào đối với các hệ quả phát sinh từ việc người khác thao tác trên Tài khoản Người dùng.</p>
+            <p>i. Đồng ý trả Phí trực tiếp từ tài khoản của mình bằng phương thức chuyển đổi trực tiếp Sản phẩmra số tiền tương ứng;</p>
+            <p>j. Ủy quyền cho Công ty thực hiện dưới bất kỳ hình thức nào, và đưa ra bất kỳ và toàn bộ quyết định nào liên quan đến việc tìm kiếm, đàm phán, giao kết, thi hành các hợp đồng, cam kết và/hoặc thỏa thuận cần thiết hoặc phù hợp cho việc thực
+                hiện Hợp tác kinh doanh. Điều khoản này có tính chất như một văn bản ủy quyền của Người dùng.</p>
+            <p>k. Không thực hiện bất kỳ hành động nào gây ra, hoặc có nguy cơ gây ra, bất kỳ sự can thiệp, cản trở hoặc hạn chế nào đối với hoạt động Hợp tác kinh doanh.</p>
+            <p>l. Thực hiện bất kỳ và toàn bộ nghĩa vụ của Người dùng, cũng như hợp tác để Công ty có thể thực hiện bất kỳ và toàn bộ quyền và nghĩa vụ của Công ty, phát sinh từ Hợp đồng này một cách thiện chí và trung thực nhằm đạt được mục đích của việc
+                giao kết Hợp đồng và Hợp tác kinh doanh.</p>
+            <p>m. Đã đọc và hiểu một cách cẩn trọng và rõ ràng, cũng như đồng ý và chịu ràng buộc bởi bất kỳ và toàn bộ các điều khoản của Hợp đồng này và Điều khoản sử dụng.</p>
+            <p>n. Không được chuyển nhượng, chuyển giao bất kỳ quyền hay nghĩa vụ nào của mình tại Hợp đồng này cho một bên thứ ba.</p>
+            <p>o. Thường xuyên kiểm tra các thông báo của Công ty để bảo đảm cập nhật với những bổ sung, thay đổi nội dung Hợp đồng này và/hoặc mọi quy định, thỏa thuận, văn bản khác. Sau 24 giờ kể từ khi thông báo chính thức tại Phần mềm Univest về việc
+                những bổ sung, thay đổi nội dung Hợp đồng này và/hoặc mọi quy định, thỏa thuận, văn bản khác, Người dùng vẫn tiếp tục sử dụng Phần mềm Univest thì được hiểu rằng Người dùng đã đồng ý với những thay đổi trên.</p>
+
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">11</div>
+    </div>
+    <div class="page page-12">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>p. Thường xuyên kiểm tra, đọc và hiểu các thông tin, nội dung, và thao tác liên quan đến Hợp tác kinh doanh tại mọi thời điểm được công bố trên Phần mềm Univest hoặc Website, hoặc thông báo vào hòm thư điện tử đã đăng ký của Người dùng.</p>
+            <p>q. Thực hiện thủ tục định danh thông tin cá nhân trong quá trình sử dụng Phần mềm Univest theo yêu cầu của Công ty tại từng thời điểm.</p>
+            <p>r. Người dùng chịu trách nhiệm cá nhân cao nhất trong việc thực hiện quy định của Hợp đồng này. Việc mất khả năng thực hiện các nghĩa vụ theo quy định của Hợp đồng này của Người dùng vì bất kỳ lý do gì và trong bất kỳ trường hợp nào cũng không
+                làm giảm trừ nghĩa vụ của Người dùng trong việc thực hiện quy định của Hợp đồng này.</p>
+            <p><strong>Điều 11. Chấm dứt hợp đồng</strong></p>
+            <p>1. Hợp đồng này sẽ chấm dứt trong các trường hợp sau:</p>
+            <p>a. Khi Công ty từ chối tham gia Hợp Tác Kinh Doanh theo điểm c, Khoản 1 Điều 9 Hợp đồng này.</p>
+            <p>b. Khi Người dùng không tuân thủ/vi phạm bất kỳ một và/hoặc toàn bộ các quy định tại Điều khoản sử dụng dẫn đến bị xoá, vô hiệu, thu hồi Tài khoản Người dùng.</p>
+            <p>c. Khi Tài khoản Người dùng không hoạt động hoặc không có tiền hay tài sản trong khoảng thời gian lớn hơn Thời gian ngủ đông, Công ty có quyền (nhưng không phải nghĩa vụ) đơn phương chấm dứt Hợp đồng này.</p>
+            <p>d. Khi Công ty chấm dứt hoạt động theo quy định của pháp luật.</p>
+            <p>e. Công ty có quyền, nhưng không có nghĩa vụ, chấm dứt Hợp đồng này khi có Sự Kiện Bất Khả Kháng.</p>
+            <p>f. Theo quy định tại Điểm i, Khoản 1, Điều 9 Hợp đồng này.</p>
+            <p>g. Theo các trường hợp khác do pháp luật quy định và cho phép.</p>
+            <p>2. Quyền lợi Người dùng trong trường hợp chấm dứt hợp đồng </p>
+            <p>a. Trường hợp hợp đồng chấm dứt theo điểm b, c và d Khoản 1 Điều 11 của Hợp đồng này thì số tiền của Người dùng có trong tài khoản công ty sẽ được hoàn trả tới Tài khoản ngân hàng của Người dùng đã đăng ký tại hệ thống Công ty sau khi trừ
+                các khoản phát sinh.</p>
+            <p>b. Trong các trường hợp khác khi Hợp đồng chấm dứt, giá trị tài sản thể hiện trong Tài khoản Người dùng mà Người dùng được hưởng lợi sẽ được Công ty toàn quyền quyết định quy đổi ra tiền theo các phương thức sau nhưng vẫn cam kết đảm bảo phần
+                lợi ích Người dùng được thừa hưởng hợp pháp: (i) dựa trên giá trị ròng của Sản phẩmđược xác định tại Phần mềm Univest vào thời điểm chấm dứt, hoặc (ii) bán hoặc bù trừ Sản phẩmcho một bên thứ ba khác, hoặc (iii) các phương thức phù hợp
+                và công bằng khác do Công ty quyết định.
+            </p>
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">12</div>
+    </div>
+    <div class="page page-13">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>c. Trong mọi trường hợp khi Hợp đồng chấm dứt thì giá trị tài sản trong Tài khoản Người dùng chỉ được hoàn trả lại cho Người dùng sau khi đã được khấu trừ phù hợp để bảo đảm xử lý các hệ quả, bồi thường thiệt hại, phạt vi phạm hoặc để bù trừ
+                cho các nghĩa vụ tài chính của Người dùng với Công ty, hoặc theo quyết định bởi Cơ quan nhà nước có thẩm quyền.</p>
+            <p>d. Các quyền và nghĩa vụ giữa Người dùng và Đối tác (nếu có) được hỗ trợ tiếp cận trên Phần mềm Univest sẽ được duy trì, chấm dứt, thay đổi theo thoả thuận giữa Người dùng và Đối tác.</p>
+            <p>3. Ngay trước hoặc sau khi Hợp đồng bị chấm dứt vì bất kỳ lý do nào, Công ty có quyền tạm khóa, khóa, hoặc xóa Tài khoản Người dùng sau khi thông báo tới Người dùng.</p>
+            <p><strong>Điều 12. Chữ ký điện tử</strong></p>
+            <p>1. Khi Người dùng đăng ký tài khoản và ấn vào một trong các nút “Đăng ký”, “Tôi đồng ý", “Đăng ký bằng Google”, “Đăng ký bằng Facebook”, “Đăng ký bằng số điện thoại” hoặc bất kỳ việc đăng ký hay chấp thuận tham gia Hợp Tác Kinh Doanh hoặc
+                sử dụng Tính năng Univest theo một cách tương tự, Người dùng đã đồng ý về tính hợp pháp của Hợp đồng hợp tác kinh doanh này và hành động trên đã xác định tính pháp lý của giao kết hợp đồng giữa Người dùng và Công ty.</p>
+            <p>2. Khi Công ty xác nhận việc đăng ký tài khoản Người dùng, Công ty xác nhận tính pháp lý của giao kết hợp đồng giữa Người dùng và Công ty tại Hợp đồng hợp tác kinh doanh này.</p>
+            <p> <strong>Điều 13. Liên lạc</strong></p>
+            <p>1. Trong quá trình Hợp tác kinh doanh và thực hiện các thao tác tích lũy trên hệ thống, nếu có gặp bất kỳ sự cố hoặc cần tư vấn hỗ trợ, Người dùng tìm câu trả lời cho vấn đề của mình trong mục Các câu hỏi thường gặp. Nếu không tìm được câu
+                hỏi và câu trả lời phù hợp, Người dùng có thể gửi yêu cầu vào địa chỉ email của Công ty hoặc điền thông tin vào Form hỗ trợ để được hỗ trợ và giải đáp thắc mắc.</p>
+            <p>2. Công ty sẽ liên lạc với Người dùng thông qua địa chỉ email hoặc thông qua các phương thức liên lạc phù hợp trong trường hợp cần thiết.</p>
+            <p><strong>Điều 14. Các cam kết khác của Người dùng</strong></p>
+            <p>1. Người dùng đồng ý rằng việc truy cập vào Phần mềm Univest có thể bị hạn chế hoặc không khả dụng theo thời gian, bao gồm do bảo trì hoặc cải tiến hệ thống, nhu cầu sử dụng, trục trặc phần mềm hoặc phần cứng hoặc xảy ra ngoài tầm kiểm soát
+                của Công ty (bao gồm lỗi của nhà điều hành, khối lượng thị trường và sự biến động, sự cố về điện, sự cố thiết bị, sự cố liên lạc, thiên tai, hỏa hoạn, dịch bệnh, hành động khủng bố và chiến tranh). </p>
+            <p>2. Người dùng đồng ý rằng Công ty không bảo đảm rằng Phần mềm Univest sẽ luôn có sẵn hoặc tại bất kỳ thời điểm cụ thể nào hoặc việc truy cập sẽ liên tục hoặc không bị gián đoạn.</p>
+
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">13</div>
+    </div>
+    <div class="page page-14">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>3. Người dùng đồng ý rằng Công ty không phải chịu trách nhiệm cho bất kỳ thiệt hại nào (bao gồm tổn thất, mất cơ hội, lợi nhuận bị mất và chi phí cho Tính năng thay thế) liên quan đến việc sử dụng, không thể sử dụng, gián đoạn hoặc gián đoạn
+                trong việc thiếu quyền truy cập hoặc hoạt động của hoặc phát sinh liên quan đến Phần mềm Univest.</p>
+            <p>4. Người dùng thừa nhận rằng sẽ thực hiện đúng hướng dẫn thanh toán của của Công ty. Người dùng thừa nhận rằng thông tin nhận dạng không khớp, không chính xác hoặc không đầy đủ về Nguồn tiền của Người dùng như theo hướng dẫn thanh toán của
+                Công ty có thể dẫn đến việc chuyển khoản Người dùng bị từ chối và không được ghi nhận số dư có trên tài khoản của Người dùng tại Phần mềm Univest. Ngoài ra trong trường hợp Người dùng chuyển khoản với nội dung không chính xác dẫn đến Hệ
+                thống phần mềm ghi nhận số tiền được chuyển đến Tài khoản tiền kinh doanh vào tài khoản của Người dùng khác, thì Công ty không chịu trách nhiệm trong việc thu hồi khoản tiền đã chuyển nhầm và Người dùng khác.</p>
+            <p>5. Người dùng đồng ý rằng, trong trường hợp gây ra bất kỳ thiệt hại nào cho Công ty, Người dùng sẽ bồi thường, bồi hoàn các chi phí phát sinh từ và/hoặc liên quan đến thiệt hại đã gây ra cho Công ty.</p>
+            <p>6. Công ty có thể cấn trừ khoản phạt, khoản bồi thường, bồi hoàn, phần tài sản bị phân bổ thừa, phân bổ nhầm vào Vốn hợp tác kinh doanh của Người dùng. Hoạt động này bao gồm việc tạm khóa, khóa tài khoản Người dùng để truy thu những khoản
+                phát sinh nêu trên.</p>
+            <p>7. Người dùng hiểu, xác nhận và đồng ý rằng các thao tác của mình trên Phần mềm Univest có thể cần một thời gian hợp lý và phù hợp để được tiến hành theo quy định pháp luật, theo các xử lý nội bộ của Công ty. Và do đó, Người dùng chấp nhận
+                các thông tin, nội dung, giá, phí thay đổi (nếu có) kể từ lúc Người dùng thực hiện thao tác, cho đến lúc thao tác được tiến hành.</p>
+            <p>8. Người dùng cho phép Công ty thu thập, sử dụng, phân tích, chuyển giao cho bên thứ ba là Đối tác của Univest Thông tin cá nhân của Người dùng nhằm mục đích phát triển các sản phẩm, Tính năng phục vụ cho lợi ích của Người dùng.</p>
+            <p>9. Người dùng hiểu rằng trong quá trình hợp tác kinh doanh, Công ty sẽ thường xuyên cập nhật cho Người dùng những thông tin liên quan đến Tài khoản Người dùng, Sản phẩmthông qua Phần mềm Univest cũng như gửi email, tin nhắn hoặc cuộc gọi để
+                giải đáp thắc mắc, chăm sóc khách hàng, quảng bá sản phẩm nhằm nâng cao chất lượng và đảm bảo lợi ích tối đa cho Người dùng. Vậy nên, tại đây Người dùng cam kết đồng ý nhận những thông báo, email, tin nhắn, cuộc gọi... (“Thông báo”) từ
+                Univest và sẽ không có bất kỳ khiếu kiện, khiếu nại nào tới Công ty liên quan đến việc gửi, nhận Thông báo.</p>
+            <p>10. Người dùng hiểu và đồng ý rằng mối quan hệ giữa Người dùng và Univest không phải là việc Univest cung cấp dịch vụ hay nghiệp vụ nhận ủy thác đầu tư mà chỉ đơn thuần là mối quan hệ hợp tác kinh doanh.</p>
+
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">14</div>
+    </div>
+    <div class="page page-15">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>11. Người dùng hiểu và nhận thức rõ Phần mềm Univest là tài sản do Công ty đóng góp trong quá trình Hợp tác kinh doanh, tuy nhiên nội dung này không hạn chế việc Công ty có toàn quyền sử dụng Phần mềm để kinh doanh hoặc hỗ trợ Người dùng tiếp
+                cận các sản phẩm, dịch vụ của Đối tác là các doanh nghiệp được cung cấp sản phẩm, dịch vụ hợp pháp theo pháp luật hiện hành theo quy định tại Điều khoản sử dụng đính. Việc lựa chọn, sử dụng sản phẩm, dịch vụ hoặc giao kết các thoả thuận,
+                hợp đồng với Đối tác trên Phần mềm Univest do Người dùng tự chịu trách nhiệm và loại trừ cho Công ty mọi kiện cáo, trách nhiệm liên quan tới giao dịch song phương của Người dùng và Đối tác.</p>
+            <p>12. Người dùng hiểu và nhận thức rõ việc thực hiện Hợp đồng này sẽ được gắn liền với việc Người dùng tuân thủ các điều khoản và điều kiện của Điều khoản sử dụng.</p>
+            <p><strong>Điều 15. Giải quyết tranh chấp</strong></p>
+            <p>1. Nếu có bất kỳ vấn đề khiếu nại, tranh chấp phát sinh thì các Bên phải kịp thời thông báo cho nhau biết và tích cực bàn bạc, giải quyết trên cơ sở thương lượng, bình đẳng, hợp tác, các Bên cùng có lợi. Trước tiên, các bên sẽ tự thương lượng,
+                hòa giải để giải quyết tranh chấp. Nếu các Bên không thể tự thương lượng, hòa giải để giải quyết tranh chấp thì sẽ mời bên thứ ba là hòa giải viên thương mại hoặc luật sư để hòa giải tranh chấp phát sinh.</p>
+            <p>2. Trong trường hợp các Bên trong tranh chấp không thể giải quyết tranh chấp thông qua thương lượng hòa giải trong vòng 90 ngày kể từ ngày phát sinh tranh chấp thì một Bên trong tranh chấp có thể đưa tranh chấp ra Trung tâm Trọng tài Quốc
+                tế Việt Nam (“VIAC”) để giải quyết theo các quy tắc của VIAC có hiệu lực vào thời điểm đề nghị giải quyết tranh chấp bằng trọng tài (“Quy tắc của VIAC”). Nơi giải quyết tranh chấp bằng trọng tài là Hà Nội. Thủ tục trọng tài sẽ được tiến
+                hành bằng tiếng Việt. Số lượng trọng tài sẽ là 3 (ba) được chỉ định theo Quy tắc của VIAC. Quyết định của trọng tài sẽ là chung thẩm ràng buộc các Bên liên quan và các chi phí liên quan đến trọng tài (bao gồm chi phí thanh toán cho luật
+                sư) sẽ do bên thua chịu.</p>
+            <p><strong>Điều 16. Hiệu lực hợp đồng</strong></p>
+            <p>1. Hợp đồng này có hiệu lực kể từ thời điểm Người dùng xác nhận đồng ý với các Điều khoản sử dụng khi mở Tài khoản Người dùng, và tự động thanh lý khi Hợp đồng chấm dứt theo quy định tại Điều 11.</p>
+            <p>2. Người dùng đồng ý rằng bằng việc giữ lại tài khoản của Univest mà không có sự phản đối sau thời gian Công ty đăng tải bản Hợp đồng mới trên Phần mềm hoặc Website là đồng nghĩa với việc Người dùng đã đồng ý và chấp nhận mọi điều khoản, điều
+                kiện thay đổi của Hợp đồng.</p>
+            <p>3. Không có điều khoản nào trong Hợp đồng này được coi là từ bỏ hoặc sửa đổi mà không có sự đồng ý trước bằng văn bản của Công ty.</p>
+
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">15</div>
+    </div>
+    <div class="page page-16">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p>4. Trong trường hợp Công ty có những thay đổi về điều khoản, điều kiện của Hợp đồng thì Công ty có trách nhiệm đăng tải những nội dung thay đổi này và toàn bộ nội dung hợp đồng mới trên Website, đồng thời thông báo cho Người dùng biết bằng
+                email hoặc đăng thông báo trên Phần mềm Univest ít nhất trước 03 (ba) ngày kể từ thời điểm các điều khoản, điều kiện mới của Hợp đồng được áp dụng. Trong trường hợp Người dùng không đồng ý với những sửa đổi này thì phải lập tức thông báo
+                cho Công ty, nếu Người dùng không thông báo về nội dung không đồng ý hoặc tiếp tục sử dụng Phần mềm Univest mặc nhiên đồng nghĩa với việc Người dùng đã đồng ý với các sửa đổi.</p>
+            <p>5. Hợp đồng này là một phần không tách rời của Điều khoản sử dụng được đăng tải tại Trang chủ của Công ty.
+            </p>
+            <p>6. Mọi nội dung, thông tin, thông báo, công bố được đăng tải trên Phần mềm Univest¸ hoặc tới địa chỉ email của Người dùng có liên quan tới quyền và nghĩa vụ của các Bên mà Người dùng không phản đối và vẫn tiếp tục tham gia Hợp tác kinh doanh
+                hoặc sử dụng Phần mềm Univest tại mọi thời điểm được coi là một bộ phận của Hợp đồng này.</p>
+            <p>7. Tất cả các phụ lục đính kèm sẽ cấu thành một bộ phận không tách rời của Hợp đồng này, có hiệu lực và được thi hành như Hợp đồng này.</p>
+            <p>8. Nếu có bất kỳ điều khoản hoặc phần điều khoản nào trong Hợp đồng này bị vô hiệu hoặc không thể thực hiện, các điều khoản và phần điều khoản khác trong Hợp đồng vẫn giữ nguyên hiệu lực.</p>
+            <div class="sign">
+                <div class="sign-left">
+                    <p><strong>NGƯỜI DÙNG</strong></p>
+                    <p><strong>(Đã ký)</strong></p>
+                    <p><strong>{full_name}</strong><br><strong>Mã định danh: {user_id}</strong></p>
+                </div>
+
+                <div class="sign-right">
+                    <p><strong>CTCP CÔNG NGHỆ TÀI CHÍNH UNIVEST</strong></p>
+                    <p><strong>ĐÀO MẠNH DŨNG</strong></p>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">16</div>
+    </div>
+    <div class="page page-17">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <div class="page17-top">
+                <p><strong>PHỤ LỤC HỢP ĐỒNG SỐ 01</strong></p>
+                <p><strong>HỢP TÁC KINH DOANH SẢN PHẨM TÚI UNIVEST VÀ TÍCH LUỸ </strong></p>
+                <p><strong>TRÊN PHẦN MỀM UNIVEST</strong></p>
+                <p>(Đính kèm Hợp đồng hợp tác kinh doanh số {user_id})</p>
+            </div>
+            <p>Căn cứ Hợp đồng hợp tác kinh doanh giữa Người dùng và Univest, các Bên thoả thuận về việc cùng hợp tác kinh doanh Sản phẩm Túi Univest và Tích luỹ trên Phần mềm Univest với nội dung như sau:</p>
+            <p> <strong>ĐIỀU 1: CÁC THUẬT NGỮ</strong></p>
+            <p>1. Trừ khi được định nghĩa rõ ràng khác trong Phụ lục này, các thuật ngữ viết hoa được sử dụng trong Phụ lục này sẽ có nghĩa như được quy định cho thuật ngữ đó tại Hợp Đồng.</p>
+            <p>2. Trong Phụ lục này,</p>
+            <p><strong>Hợp Đồng:</strong> Là Hợp đồng hợp tác kinh doanh số {user_id} được ký kết giữa CTCP Công nghệ Tài chính Univest và Người dùng gồm cả các phụ lục, văn bản sửa đổi, bổ sung và bản thuyết minh của Hợp Đồng.</p>
+            <p><strong>Sản phẩm Túi Univest và Tích lũy:</strong> là những sản phẩm do Univest sáng tạo, trong đó Vốn Hợp Tác Kinh Doanh của Người dùng sẽ được sử dụng để mua các Sản phẩm. Nội dung Sản phẩm Túi Univest được thông báo trên Phần mềm tại từng
+                thời điểm.</p>
+            <p><strong>Sản phẩm</strong> tại phụ lục này bao gồm nhưng không giới hạn chứng chỉ tiền gửi, hợp đồng tiền gửi, trái phiếu, sản phẩm khác với mức lợi nhuận cố định… từ các Ngân hàng, tổ chức tài chính, doanh nghiệp do Công ty quyết định đảm
+                bảo theo đúng quy định pháp luật</p>
+            <p><strong>ĐIỀU 2: NỘI DUNG HỢP TÁC</strong></p>
+            <p>Người dùng và Univest sẽ triển khai hoạt động Hợp Tác Kinh Doanh đối với Sản phẩm Túi Univest và Tích luỹ như sau:</p>
+            <p>a. Người dùng đóng góp Vốn Hợp Tác Kinh Doanh và Univest đóng góp nền tảng công nghệ để cùng thực hiện đầu tư vào các Sản phẩm (chứng chỉ tiền gửi, hợp đồng tiền gửi, trái phiếu, khác…) được hỗ trợ tiếp cận trên Phần mềm Univest;</p>
+            <p>b. Sau khi Người dùng góp Vốn Hợp Tác Kinh Doanh vào Univest, Hệ thống phần mềm sẽ tự động phân bổ Vốn Hợp Tác Kinh Doanh để mua Sản phẩm phù hợp với Sản phẩm Túi Univest và Tích luỹ mà Người dùng lựa chọn;
+            </p>
+            <p>c. Việc đầu tư Vốn Hợp Tác Kinh Doanh vào Sản phẩm Túi Univest và Tích luỹ do Người dùng đơn phương quyết định, Univest chỉ là bên cung cấp nền tảng công nghệ để tập hợp chỉ định tích luỹ của Người dùng đối với các Sản phẩm;</p>
+            <p>d. Các công việc khác theo quy định tại Hợp đồng và thỏa thuận giữa Hai Bên trong từng thời kỳ.</p>
+
+
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">17</div>
+    </div>
+    <div class="page page-18">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p><strong>ĐIỀU 3: LƯU Ý TRONG QUÁ TRÌNH HỢP TÁC KINH DOANH SẢN PHẨM TÚI UNIVEST VÀ TÍCH LUỸ</strong></p>
+            <p>1. Mỗi loại Sản phẩm Túi Univest và Tích luỹ sẽ được Univest giới thiệu về thông tin sản phẩm, tỷ lệ lợi nhuận cố định mà Người dùng được hưởng phù hợp với biến động thị trường, khẩu vị rủi ro và chính sách của Univest từng thời kỳ;</p>
+            <p>2. Univest đảm bảo và cam kết về mức lợi nhuận cố định cho Người dùng khi sử dụng Sản phẩm Túi Univest và Tích luỹ tương ứng với thông báo về mức lợi nhuận được cập nhật trên Phần mềm từng thời kỳ;</p>
+            <p>3. Căn cứ theo lựa chọn của Người dùng, lợi nhuận phát sinh từ Sản phẩm Túi Univest và Tích luỹ có thể được tự động tái tích luỹ/tái đầu tư hoặc hoàn trả hàng tháng cho Người dùng vào Tài khoản ngân hàng của Người dùng khi lợi nhuận đạt mức
+                từ 50.000 đồng trở lên/tháng (hoặc một mức khác do Univest thông báo từng thời kỳ);</p>
+            <p>4. Căn cứ theo Điều 7 Hợp đồng, Công ty sẽ thực hiện cấn trừ thuế TNCN trước khi hoàn trả Vốn hợp tác kinh doanh cho Người dùng như sau: Mức thuế suất 5% với phần lợi nhuận khi Người dùng rút/nhận tiền, tiền lãi, lợi tức hoặc lợi nhuận khác
+                từ Sản phẩm Túi Univest và Tích lũy.</p>
+            <p><strong>ĐIỀU 4: THỜI HẠN VÀ CHẤM DỨT PHỤ LỤC</strong></p>
+            <p>1. Phụ lục này có hiệu lực kể từ ngày ký và sẽ chấm dứt theo các trường hợp được quy định tại Khoản 4.2 Phụ lục này.</p>
+            <p>2. Phụ lục này sẽ được chấm dứt trong những trường hợp sau:</p>
+            <p>a. Hợp Đồng bị chấm dứt;</p>
+            <p>b. Căn cứ theo đánh giá của Công ty, Người dùng không đủ điều kiện để sử dụng Sản phẩm Túi Univest và Tích luỹ theo quy định tại Phụ lục này và Công ty có toàn quyền loại trừ việc Hợp tác kinh doanh với Người dùng liên quan đến Sản phẩm Túi
+                Univest và Tích luỹ;</p>
+            <p>c. Các trường hợp khác theo quy định tại Hợp Đồng và quy định của pháp luật.</p>
+            <p>3. Thủ tục giải quyết chấm dứt Phụ lục:</p>
+            <p>Khi phát sinh một trong các trường hợp chấm dứt Phụ lục, quyền lợi Người dùng sẽ được giải quyết tương ứng như trường hợp Hợp đồng chấm dứt được quy định tại Điều 11 Hợp đồng. </p>
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">18</div>
+    </div>
+    <div class="page page-19">
+        <div class="header">
+
+            <img src="https://univest.vn/images/univest/logo.svg" />
+
+        </div>
+        <div class="content">
+            <p><strong>ĐIỀU 5: CÁC ĐIỀU KHOẢN KHÁC</strong></p>
+            <p>1. Phụ lục này được diễn giải và áp dụng cùng với Hợp Đồng, tạo thành một hợp đồng hoàn chỉnh, không thể tách rời và có giá trị ràng buộc Các Bên. Các nội dung không được quy định trong Phụ lục này sẽ tuân thủ các quy định tại Hợp Đồng.</p>
+
+            <p>2. Nếu có bất kỳ nội dung nào mâu thuẫn giữa quy định tại Phụ lục và Hợp Đồng, thứ tự ưu tiên áp dụng như sau:
+            </p>
+            <p>a. Phụ lục 01 này;</p>
+            <p>b. Hợp Đồng.</p>
+
+            <p><strong>ĐIỀU 6: ĐIỀU KHOẢN THI HÀNH</strong></p>
+            <p>Phụ lục này có hiệu lực kể từ ngày có hiệu lực của Hợp đồng. Tại thời điểm yêu cầu Univest cấp Tài khoản Người dùng, Người dùng cam kết đã đọc, hiểu rõ, nhất trí với toàn bộ nội dung tại Phụ lục này./</p>
+        </div>
+        <div class="footer">
+
+            <div class="footer-left">
+                <strong>
+                    CTCP Công nghệ Tài chính Univest
+                </strong>
+            </div>
+            <div class="footer-right">
+                <span>Email: contact@univest.vn</span>
+                <span>Website: <a href="https://univest.vn/">https://univest.vn</a></span>
+            </div>
+
+        </div>
+        <div class="numbered">19</div>
+    </div>
+
+</body>
+
+
+</html>
